@@ -1,3 +1,3 @@
 #pragma once
-void Int_DE(void);
 
+void Int_DE(void);

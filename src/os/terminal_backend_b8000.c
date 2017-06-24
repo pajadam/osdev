@@ -56,7 +56,7 @@ static void B8000_ClearScreen(TerminalBackend *tb) {
 
 static void B8000_PutCharacter(TerminalBackend *tb, uint32_t ch) {
   UNUSED(tb);
-  unsigned char *textvram = (unsigned char*)0xB8000;  
+  unsigned char *textvram = (unsigned char*)0xB8000;
 
   unsigned short x = B8000_Context.x;
   unsigned short y = B8000_Context.y;
@@ -74,7 +74,7 @@ static void B8000_PutCharacter(TerminalBackend *tb, uint32_t ch) {
   x += 1;
   if (x == 80) {
     x = 0;
-    y += 1;   
+    y += 1;
   }
 
   B8000_SetCursorPosition(tb, x, y);
@@ -84,7 +84,7 @@ static void B8000_GetCursorPosition(
     TerminalBackend *tb, uint16_t *x, uint16_t *y) {
   UNUSED(tb);
   *x = B8000_Context.x;
-  *y = B8000_Context.y;  
+  *y = B8000_Context.y;
 }
 
 static void B8000_GetSize(TerminalBackend *tb,
@@ -95,7 +95,7 @@ static void B8000_GetSize(TerminalBackend *tb,
 }
 
 static void B8000_ScrollLine(TerminalBackend *tb) {
-  unsigned char *textvram = (unsigned char*)0xB8000;  
+  unsigned char *textvram = (unsigned char*)0xB8000;
   memmove(textvram, textvram + 80 * 2, 80 * (25 - 1) * 2);
 
   for (size_t i = 80 * (25 - 1) * 2; i < 80 * 25 * 2; i+= 2) {
@@ -120,5 +120,3 @@ TerminalBackend *TerminalBackendB8000(void) {
   // But we pass it as non-const to the functions.
   return (TerminalBackend*)&B8000_Functions;
 }
-
-
