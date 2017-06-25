@@ -7,8 +7,7 @@ void T_SetCursorPosition(
   tb->func_set_cursor_position(tb, x, y);
 }
 
-void T_SetColor(TerminalBackend *tb, unsigned char fgColor, unsigned char bgColor, bool blink)
-{
+void T_SetColor(TerminalBackend *tb, unsigned char fgColor, unsigned char bgColor, bool blink) {
   tb->func_set_color(tb, fgColor, bgColor, blink);
 }
 

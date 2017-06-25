@@ -3,8 +3,7 @@
 #include "terminal_backend_b8000.h"
 
 // Thanks to Karol Grzybowski
-typedef struct TrapFrame
-{
+typedef struct TrapFrame {
   uint64_t r15;
   uint64_t r14;
   uint64_t r13;
@@ -33,8 +32,7 @@ typedef struct TrapFrame
 
 } TrapFrame;
 
-void GuruPanicOfDeath(const char *reason, TrapFrame *frame)
-{
+void GuruPanicOfDeath(const char *reason, TrapFrame *frame) {
   TerminalBackend *con = TerminalBackendB8000();
   T_ClearScreen(con);
 
@@ -70,7 +68,6 @@ void GuruPanicOfDeath(const char *reason, TrapFrame *frame)
     ;
 }
 
-void Int_DE(TrapFrame *frame)
-{
+void Int_DE(TrapFrame *frame) {
   GuruPanicOfDeath("DIVISION_ERROR", frame);
 }

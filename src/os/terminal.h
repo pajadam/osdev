@@ -16,7 +16,8 @@ typedef void (*TBfunc_PutCharacter)(TerminalBackend *tb, uint32_t ch);
 typedef void (*TBfunc_GetSize)(TerminalBackend *tb,
     uint16_t *w, uint16_t *h);
 typedef void (*TBfunc_ScrollLine)(TerminalBackend *tb);
-typedef void (*TBfunc_SetColor)(TerminalBackend *tb, unsigned char fgColor, unsigned char bgColor, bool blink);
+typedef void (*TBfunc_SetColor)(TerminalBackend *tb,
+    unsigned char fgColor, unsigned char bgColor, bool blink);
 
 struct TerminalBackend {
   TBfunc_SetCursorPosition func_set_cursor_position;
