@@ -1,8 +1,10 @@
+#!/usr/bin/python
 from __future__ import print_function
-from scripts import build, run
 import shutil
+import traceback
 import sys
 import os
+from scripts import build, run
 
 
 def main():
@@ -27,26 +29,20 @@ def main():
                 os.chdir("..")
                 shutil.rmtree("tmp")
                 print("Cleaned ./tmp directory.")
+            elif sys.argv[1] == "help":
+                print("Usage:")
+                print("  build\t- Build project")
+                print("  run\t- Run project")
+                print("  test\t- Build and run project")
+                print("  clean\t- Clean temporary directory\n")
             else:
-                raise ValueError("Invalid argument: " + sys.argv[1])
+                print("Invalid argument: " + sys.argv[1])
         else:
-            raise ValueError("Missing arguments")
+            print("Missing arguments. Use 'help' to display usage.")
 
-    except ValueError as exc:
-        print(exc)
-        print("Usage:")
-        print("  build\t- Build project")
-        print("  run\t- Run project")
-        print("  test\t- Build and run project")
-        print("  clean\t- Clean temporary directory\n")
-        sys.exit(-1)
-
-    except Exception as exc:
-        print(exc)
-        sys.exit(-1)
-
-    sys.exit(0)
-
+    except:
+        print(traceback.format_exc())
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
