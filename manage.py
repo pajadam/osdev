@@ -1,3 +1,4 @@
+from __future__ import print_function
 from scripts import build, run
 import shutil
 import sys
@@ -38,9 +39,13 @@ def main():
         print("  run\t- Run project")
         print("  test\t- Build and run project")
         print("  clean\t- Clean temporary directory\n")
+        sys.exit(-1)
 
     except Exception as exc:
         print(exc)
+        sys.exit(-1)
+
+    sys.exit(0)
 
 
 if __name__ == "__main__":
