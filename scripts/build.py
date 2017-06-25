@@ -1,7 +1,5 @@
-#!/usr/bin/python
 from __future__ import print_function
 import os
-import sys
 import subprocess
 from glob import glob
 
@@ -58,7 +56,7 @@ def build():
     ]
 
     for cmd in cmds_to_run:
-        if type(cmd) is str:
+        if isinstance(cmd, str):
             print("Running:", cmd)
             print(subprocess.check_output(cmd, shell=True))
         else:
